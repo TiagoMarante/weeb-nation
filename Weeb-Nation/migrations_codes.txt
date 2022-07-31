@@ -1,0 +1,11 @@
+#install
+dotnet add package Microsoft.EntityFrameworkCore.Design
+
+
+dotnet ef migrations add InitialMigration
+dotnet ef database update
+dotnet ef database drop
+
+rm -r Migrations && clear && dotnet ef migrations add new_migration && dotnet ef database update
+
+dotnet ef dbcontext scaffold "Host=tai.db.elephantsql.com;Port=5432;Database=ljpkgjwk;Username=ljpkgjwk;Password=hIdiF08_Ry9YrRdgiAPkccCcZBH55FG_" Npgsql.EntityFrameworkCore.PostgreSQL --output-dir "/Users/tiagomarante/Documents/github/weeb-nation/Weeb-Nation/OutputModel"
