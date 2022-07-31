@@ -18,5 +18,8 @@ namespace Entities
         public virtual ICollection<FavoriteSerie> FavoriteSeries { get; set; }
         public virtual ICollection<ToWatchSerie> ToWatchSeries { get; set; }
         public virtual ICollection<UserWatchedSerie> UserWatchedSeries { get; set; }
+
     }
+
+
 }

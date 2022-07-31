@@ -1,5 +1,6 @@
 using Entities;
 using Microsoft.AspNetCore.Mvc;
+using Weeb_Nation.Adapters;
 
 namespace Weeb_Nation.Controllers;
 
@@ -7,12 +8,11 @@ namespace Weeb_Nation.Controllers;
 [Route("users")]
 public class UsersController : ControllerBase
 {
+    private readonly IInMemUsersRepository repository;
 
-    private readonly InMemUsersRepository repository;
-
-    public UsersController()
+    public UsersController(IInMemUsersRepository repository)
     {
-        repository = new InMemUsersRepository();
+        this.repository = repository;
     }
 
     [HttpGet]
@@ -20,6 +20,19 @@ public class UsersController : ControllerBase
     {
         var users = repository.GetAll();
         return users;
+    }
+
+    [HttpGet("{id}")]
+    public ActionResult<User> GetUserById(Guid id)
+    {
+        var users = repository.GetById(id);
+
+        if (users is null)
+        {
+            return NotFound();
+        }
+
+        return Ok(users);
     }
 
 }

@@ -1,9 +1,9 @@
 using Entities;
 
-namespace Weeb_Nation.Controllers;
+namespace Weeb_Nation.Adapters;
 
 
-public class InMemUsersRepository
+public class InMemUsersRepository : IInMemUsersRepository
 {
 
     private readonly List<User> users = new(){

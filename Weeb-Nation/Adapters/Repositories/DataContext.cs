@@ -27,6 +27,7 @@ namespace Adapters.Repositories
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //Change this for onion
             modelBuilder.HasPostgresExtension("btree_gin")
                 .HasPostgresExtension("btree_gist")
                 .HasPostgresExtension("citext")
