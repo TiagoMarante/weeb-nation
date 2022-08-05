@@ -6,5 +6,7 @@ public interface IRepository<TEntity>
     TEntity Get(Guid id);
     List<TEntity> GetByIdsAsync(List<int> ids);
     TEntity Add(TEntity obj);
+
+    void Update(Guid id, TEntity obj);
     void Delete(TEntity obj);
 }

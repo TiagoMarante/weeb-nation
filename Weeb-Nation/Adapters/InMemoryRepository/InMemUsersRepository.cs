@@ -14,12 +14,14 @@ public class InMemUsersRepository : IRepository<User>
 
     public User Add(User obj)
     {
+
         users.Add(obj);
 
         if (users.Contains(obj))
         {
             return obj;
         }
+
         return null;
 
     }
@@ -40,11 +42,22 @@ public class InMemUsersRepository : IRepository<User>
         return users;
     }
 
+    public void Update(Guid id, User obj)
+    {
+
+        //Update for better solution
+
+        var userDb = Get(id);
+
+        users.Remove(userDb);
+        users.Add(obj);
+
+    }
+
     public List<User> GetByIdsAsync(List<int> ids)
     {
         throw new NotImplementedException();
     }
-
 
 
 }

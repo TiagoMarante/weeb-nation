@@ -6,5 +6,7 @@ namespace Entities
 
         public DateTime created { get; set; }
         public DateTime changed { get; set; }
+
+
     }
 }

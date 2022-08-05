@@ -80,11 +80,7 @@ namespace Adapters.Repositories
                     .OnDelete(DeleteBehavior.SetNull)
                     .HasConstraintName("Comment_movieId_fkey");
 
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.Comments)
-                    .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("Comment_userId_fkey");
+
             });
 
             modelBuilder.Entity<Episode>(entity =>
@@ -122,11 +118,7 @@ namespace Adapters.Repositories
                     .IsRequired()
                     .HasColumnName("userId");
 
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.FavoriteSeries)
-                    .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("FavoriteSerie_userId_fkey");
+
             });
 
             modelBuilder.Entity<Image>(entity =>
@@ -226,11 +218,7 @@ namespace Adapters.Repositories
                     .IsRequired()
                     .HasColumnName("userId");
 
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.ToWatchSeries)
-                    .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("ToWatchSerie_userId_fkey");
+
             });
 
             modelBuilder.Entity<User>(entity =>
@@ -262,11 +250,7 @@ namespace Adapters.Repositories
                     .IsRequired()
                     .HasColumnName("userId");
 
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.UserWatchedSeries)
-                    .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("UserWatchedSerie_userId_fkey");
+
             });
 
             OnModelCreatingPartial(modelBuilder);
