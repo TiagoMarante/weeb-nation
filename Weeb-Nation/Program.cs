@@ -1,3 +1,4 @@
+using Entities;
 using Weeb_Nation.Adapters;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,7 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Dependecy Injection
-builder.Services.AddSingleton<IInMemUsersRepository, InMemUsersRepository>();
+builder.Services.AddSingleton<IRepository<User>, InMemUsersRepository>();
 
 var app = builder.Build();
 

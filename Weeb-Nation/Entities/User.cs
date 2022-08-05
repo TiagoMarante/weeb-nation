@@ -1,3 +1,5 @@
+using Adapters.ApplicationServices.Dtos;
+
 namespace Entities
 {
     public partial class User : Entity
@@ -19,7 +21,14 @@ namespace Entities
         public virtual ICollection<ToWatchSerie> ToWatchSeries { get; set; }
         public virtual ICollection<UserWatchedSerie> UserWatchedSeries { get; set; }
 
+
+        public UserDto toDto()
+        {
+            return new UserDto(Id, Username, Email);
+        }
     }
+
+
 
 
 }
