@@ -1,7 +1,7 @@
 using Entities;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Weeb_Nation.Adapters;
+namespace Weeb_Nation.RepositoryInterfaces;
 
 
 public class InMemUsersRepository<TEntity> : IRepository<TEntity> where TEntity : Entity

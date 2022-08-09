@@ -3,18 +3,18 @@ using System.ComponentModel.DataAnnotations;
 namespace Adapters.ApplicationServices.Dtos
 {
 
-    public class CreateUserDto
+    public class CrudUserDto
     {
 
         [Required]
-        public string username { get; set; }
+        public string username { get; }
 
         [Required, EmailAddress]
-        public string email { get; set; }
+        public string email { get; }
         [Required, MinLength(7), MaxLength(15)]
-        public string password { get; set; }
+        public string password { get; }
 
-        public CreateUserDto(string username, string email, string password)
+        public CrudUserDto(string username, string email, string password)
         {
             this.username = username;
             this.email = email;

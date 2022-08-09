@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Weeb_Nation.Adapters;
+namespace Weeb_Nation.RepositoryInterfaces;
 
 public interface IRepository<TEntity>
 {

@@ -1,6 +1,6 @@
 using Entities;
 
-namespace Weeb_Nation.Adapters;
+namespace Weeb_Nation.RepositoryInterfaces;
 
 public interface IInMemUsersRepository
 {

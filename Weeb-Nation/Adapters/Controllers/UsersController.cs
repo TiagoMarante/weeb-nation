@@ -1,12 +1,12 @@
 using Adapters.ApplicationServices.Dtos;
 using Entities;
 using Microsoft.AspNetCore.Mvc;
-using Weeb_Nation.Adapters;
+using Weeb_Nation.RepositoryInterfaces;
 
 namespace Weeb_Nation.Controllers;
 
 [ApiController]
-[Route("users")]
+[Route("/users")]
 public class UsersController : ControllerBase
 {
     private readonly IRepository<User> repository;
@@ -18,14 +18,14 @@ public class UsersController : ControllerBase
 
 
     [HttpGet]
-    public IEnumerable<UserDto> GetUsers()
+    public IEnumerable<UserDto> GetAll()
     {
         return listToDto(repository.GetAll());
     }
 
 
     [HttpGet("{id}")]
-    public ActionResult<UserDto> GetUserById(Guid id)
+    public ActionResult<UserDto> GetById(Guid id)
     {
         var users = repository.Get(id);
 
@@ -39,7 +39,7 @@ public class UsersController : ControllerBase
 
 
     [HttpDelete("{id}")]
-    public ActionResult<UserDto> DeleteById(Guid id)
+    public ActionResult<UserDto> Delete(Guid id)
     {
         var userDb = repository.Get(id);
 
@@ -53,7 +53,7 @@ public class UsersController : ControllerBase
 
 
     [HttpPost]
-    public ActionResult<UserDto> AddUser(CreateUserDto user)
+    public ActionResult<UserDto> Add(CrudUserDto user)
     {
 
         // Passar para a camada serviço
@@ -68,12 +68,12 @@ public class UsersController : ControllerBase
 
         var createUser = repository.Add(newUser);
 
-        return CreatedAtAction(nameof(GetUserById), new { id = newUser.Id }, newUser.toDto());
+        return CreatedAtAction(nameof(GetById), new { id = newUser.Id }, newUser.toDto());
     }
 
 
     [HttpPut("{id}")]
-    public ActionResult<UserDto> UpdateUser(Guid id, UpdateUserDto updateUser)
+    public ActionResult<UserDto> Update(Guid id, CrudUserDto updateUser)
     {
         // Passar para a camada serviço
 
@@ -104,18 +104,14 @@ public class UsersController : ControllerBase
 
         if (data != null)
         {
-            foreach (var user in data)
+            foreach (var elem in data)
             {
-                usersDto.Add(user.toDto());
+                usersDto.Add(elem.toDto());
             }
 
         }
 
-
         return usersDto;
-
-
-
     }
 
 }

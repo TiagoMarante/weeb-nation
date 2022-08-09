@@ -1,5 +1,5 @@
 using Entities;
-using Weeb_Nation.Adapters;
+using Weeb_Nation.RepositoryInterfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +12,7 @@ builder.Services.AddSwaggerGen();
 
 // Dependecy Injection
 builder.Services.AddSingleton<IRepository<User>, InMemUsersRepository<User>>();
+builder.Services.AddSingleton<IRepository<Movie>, InMemUsersRepository<Movie>>();
 
 var app = builder.Build();
 
