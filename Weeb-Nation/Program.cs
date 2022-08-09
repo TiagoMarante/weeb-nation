@@ -11,7 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Dependecy Injection
-builder.Services.AddSingleton<IRepository<User>, InMemUsersRepository>();
+builder.Services.AddSingleton<IRepository<User>, InMemUsersRepository<User>>();
 
 var app = builder.Build();
 

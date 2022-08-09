@@ -1,19 +1,20 @@
 using Entities;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Weeb_Nation.Adapters;
 
 
-public class InMemUsersRepository : IRepository<User>
+public class InMemUsersRepository<TEntity> : IRepository<TEntity> where TEntity : Entity
 {
 
-    private readonly List<User> users = new()
+    private readonly List<TEntity> users = new()
     {
         // new User {Id = Guid.NewGuid(), Username="Tiago Marante", Email="tiago@gmail.com", Password="boas", created=DateTime.UtcNow},
         // new User {Id = Guid.NewGuid(), Username="Rui Angola", Email="rui@gmail.com", Password="boas2" , created=DateTime.UtcNow},
         // new User {Id = Guid.NewGuid(), Username="Miguel Sousa", Email="miguel@gmail.com", Password="boas3", created=DateTime.UtcNow}
     };
 
-    public User Add(User obj)
+    public ActionResult<TEntity> Add(TEntity obj)
     {
 
         users.Add(obj);
@@ -27,23 +28,24 @@ public class InMemUsersRepository : IRepository<User>
 
     }
 
-    public void Delete(User obj)
+    public void Delete(TEntity obj)
     {
         users.Remove(obj);
 
     }
 
-    public User Get(Guid id)
+    public TEntity Get(Guid id)
     {
+
         return users.Where(user => user.Id == id).SingleOrDefault();
     }
 
-    public List<User> GetAll()
+    public List<TEntity> GetAll()
     {
         return users;
     }
 
-    public void Update(Guid id, User obj)
+    public void Update(Guid id, TEntity obj)
     {
 
         //Update for better solution
@@ -54,11 +56,5 @@ public class InMemUsersRepository : IRepository<User>
         users.Add(obj);
 
     }
-
-    public List<User> GetByIdsAsync(List<int> ids)
-    {
-        throw new NotImplementedException();
-    }
-
 
 }
