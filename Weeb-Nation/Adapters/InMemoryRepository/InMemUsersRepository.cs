@@ -6,10 +6,11 @@ namespace Weeb_Nation.Adapters;
 public class InMemUsersRepository : IRepository<User>
 {
 
-    private readonly List<User> users = new(){
-        new User {Id = Guid.NewGuid(), Username="Tiago Marante", Email="tiago@gmail.com", Password="boas", created=DateTime.UtcNow},
-        new User {Id = Guid.NewGuid(), Username="Rui Angola", Email="rui@gmail.com", Password="boas2" , created=DateTime.UtcNow},
-        new User {Id = Guid.NewGuid(), Username="Miguel Sousa", Email="miguel@gmail.com", Password="boas3", created=DateTime.UtcNow}
+    private readonly List<User> users = new()
+    {
+        // new User {Id = Guid.NewGuid(), Username="Tiago Marante", Email="tiago@gmail.com", Password="boas", created=DateTime.UtcNow},
+        // new User {Id = Guid.NewGuid(), Username="Rui Angola", Email="rui@gmail.com", Password="boas2" , created=DateTime.UtcNow},
+        // new User {Id = Guid.NewGuid(), Username="Miguel Sousa", Email="miguel@gmail.com", Password="boas3", created=DateTime.UtcNow}
     };
 
     public User Add(User obj)
